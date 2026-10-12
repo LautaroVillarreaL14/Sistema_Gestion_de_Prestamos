@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { CuotasService } from './cuotas.service.js';
-import { CuotasController } from './cuotas.controller.js';
+import { PrismaCuotasRepository } from './entities/cuotas.prisma.repository.js';
+
 
 @Module({
-  controllers: [CuotasController],
-  providers: [CuotasService],
+  providers: [CuotasService, PrismaCuotasRepository],
+  exports: [CuotasService]
 })
 export class CuotasModule {}
