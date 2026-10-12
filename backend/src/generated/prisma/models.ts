@@ -10,6 +10,6 @@
  */
 export type * from './models/Cliente.js'
 export type * from './models/Prestamo.js'
-export type * from './models/PlandDePago.js'
+export type * from './models/PlanDePago.js'
 export type * from './models/Cuota.js'
 export type * from './commonInputTypes.js'

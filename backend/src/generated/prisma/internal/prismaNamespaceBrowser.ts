@@ -53,7 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Cliente: 'Cliente',
   Prestamo: 'Prestamo',
-  PlandDePago: 'PlandDePago',
+  PlanDePago: 'PlanDePago',
   Cuota: 'Cuota'
 } as const
 
@@ -87,24 +87,25 @@ export type ClienteScalarFieldEnum = (typeof ClienteScalarFieldEnum)[keyof typeo
 export const PrestamoScalarFieldEnum = {
   idPrestamo: 'idPrestamo',
   estadoPrestamo: 'estadoPrestamo',
-  ClienteId: 'ClienteId',
+  idCliente: 'idCliente',
   montoPrestado: 'montoPrestado',
-  porcentajeRecarco: 'porcentajeRecarco',
-  fechaHoraOtorigado: 'fechaHoraOtorigado',
+  porcentajeRecargo: 'porcentajeRecargo',
+  montoAdevolver: 'montoAdevolver',
+  fechaHoraOtorgado: 'fechaHoraOtorgado',
   fechaHoraFinalizado: 'fechaHoraFinalizado'
 } as const
 
 export type PrestamoScalarFieldEnum = (typeof PrestamoScalarFieldEnum)[keyof typeof PrestamoScalarFieldEnum]
 
 
-export const PlandDePagoScalarFieldEnum = {
+export const PlanDePagoScalarFieldEnum = {
   idPlanDePago: 'idPlanDePago',
-  PrestamoId: 'PrestamoId',
   cantidadCuotas: 'cantidadCuotas',
-  diasEntreCuotas: 'diasEntreCuotas'
+  diasEntreCuotas: 'diasEntreCuotas',
+  idPrestamo: 'idPrestamo'
 } as const
 
-export type PlandDePagoScalarFieldEnum = (typeof PlandDePagoScalarFieldEnum)[keyof typeof PlandDePagoScalarFieldEnum]
+export type PlanDePagoScalarFieldEnum = (typeof PlanDePagoScalarFieldEnum)[keyof typeof PlanDePagoScalarFieldEnum]
 
 
 export const CuotaScalarFieldEnum = {
@@ -116,7 +117,8 @@ export const CuotaScalarFieldEnum = {
   montoPagado: 'montoPagado',
   fechaInicioCuota: 'fechaInicioCuota',
   fechaVencimientoCuota: 'fechaVencimientoCuota',
-  fechaHoraPagada: 'fechaHoraPagada'
+  fechaHoraPagada: 'fechaHoraPagada',
+  idPlanDePago: 'idPlanDePago'
 } as const
 
 export type CuotaScalarFieldEnum = (typeof CuotaScalarFieldEnum)[keyof typeof CuotaScalarFieldEnum]

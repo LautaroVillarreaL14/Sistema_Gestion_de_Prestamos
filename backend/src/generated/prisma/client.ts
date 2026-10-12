@@ -52,10 +52,10 @@ export type Cliente = Prisma.ClienteModel
  */
 export type Prestamo = Prisma.PrestamoModel
 /**
- * Model PlandDePago
+ * Model PlanDePago
  * 
  */
-export type PlandDePago = Prisma.PlandDePagoModel
+export type PlanDePago = Prisma.PlanDePagoModel
 /**
  * Model Cuota
  * 

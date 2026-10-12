@@ -34,32 +34,34 @@ enum FormaDePago {
 }
 
 model Cliente {
-  idCliente String @id @default(uuid(7)) @unique
+  idCliente String @id @default(uuid(7))
   nombre String @db.VarChar(50)
   apellido String @db.VarChar(50)
-  numeroDNI String @db.VarChar(50) @unique
-  email String? @db.VarChar(50)
-  Prestamos Prestamo[]
+  numeroDNI String @db.VarChar(10) @unique
+  email String? @db.VarChar(100)
+  prestamos Prestamo[]
 }
 
 model Prestamo {
   idPrestamo String @id @default(uuid(7))
   estadoPrestamo EstadoPrestamo @default(ACTIVO)
-  idCliente Cliente @relation(fields: [ClienteId], references: [idCliente]) 
-  ClienteId String
-  montoPrestado Decimal @db.Decimal(10, 2)
-  porcentajeRecarco Decimal @db.Decimal(5, 2)
-  fechaHoraOtorigado DateTime @default(now())
+  cliente Cliente @relation(fields: [idCliente], references: [idCliente])
+  idCliente String
+  montoPrestado Decimal @db.Decimal(12, 2)
+  porcentajeRecargo Decimal @db.Decimal(5, 2)
+  montoAdevolver Decimal @db.Decimal(12, 2)
+  fechaHoraOtorgado DateTime @default(now())
   fechaHoraFinalizado DateTime?
-  planDePago PlandDePago []
-  }
+  planDePago PlanDePago?
+}
 
-model PlandDePago {
+model PlanDePago {
   idPlanDePago String @id @default(uuid(7))
-  idPrestamo Prestamo @relation(fields: [PrestamoId], references: [idPrestamo])
-  PrestamoId String
   cantidadCuotas Int
   diasEntreCuotas Int
+  idPrestamo String @unique
+  prestamo Prestamo @relation(fields: [idPrestamo], references: [idPrestamo])
+  cuotas Cuota[]
 }
 
 model Cuota {
@@ -72,6 +74,7 @@ model Cuota {
   fechaInicioCuota DateTime
   fechaVencimientoCuota DateTime
   fechaHoraPagada DateTime?
-
-  
+  idPlanDePago String
+  planDePago PlanDePago @relation(fields: [idPlanDePago], references: [idPlanDePago])
+  @@unique([idPlanDePago, numeroDeCuota])
 }

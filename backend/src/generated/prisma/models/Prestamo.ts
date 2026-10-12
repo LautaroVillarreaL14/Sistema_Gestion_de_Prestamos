@@ -28,41 +28,46 @@ export type AggregatePrestamo = {
 
 export type PrestamoAvgAggregateOutputType = {
   montoPrestado: runtime.Decimal | null
-  porcentajeRecarco: runtime.Decimal | null
+  porcentajeRecargo: runtime.Decimal | null
+  montoAdevolver: runtime.Decimal | null
 }
 
 export type PrestamoSumAggregateOutputType = {
   montoPrestado: runtime.Decimal | null
-  porcentajeRecarco: runtime.Decimal | null
+  porcentajeRecargo: runtime.Decimal | null
+  montoAdevolver: runtime.Decimal | null
 }
 
 export type PrestamoMinAggregateOutputType = {
   idPrestamo: string | null
   estadoPrestamo: $Enums.EstadoPrestamo | null
-  ClienteId: string | null
+  idCliente: string | null
   montoPrestado: runtime.Decimal | null
-  porcentajeRecarco: runtime.Decimal | null
-  fechaHoraOtorigado: Date | null
+  porcentajeRecargo: runtime.Decimal | null
+  montoAdevolver: runtime.Decimal | null
+  fechaHoraOtorgado: Date | null
   fechaHoraFinalizado: Date | null
 }
 
 export type PrestamoMaxAggregateOutputType = {
   idPrestamo: string | null
   estadoPrestamo: $Enums.EstadoPrestamo | null
-  ClienteId: string | null
+  idCliente: string | null
   montoPrestado: runtime.Decimal | null
-  porcentajeRecarco: runtime.Decimal | null
-  fechaHoraOtorigado: Date | null
+  porcentajeRecargo: runtime.Decimal | null
+  montoAdevolver: runtime.Decimal | null
+  fechaHoraOtorgado: Date | null
   fechaHoraFinalizado: Date | null
 }
 
 export type PrestamoCountAggregateOutputType = {
   idPrestamo: number
   estadoPrestamo: number
-  ClienteId: number
+  idCliente: number
   montoPrestado: number
-  porcentajeRecarco: number
-  fechaHoraOtorigado: number
+  porcentajeRecargo: number
+  montoAdevolver: number
+  fechaHoraOtorgado: number
   fechaHoraFinalizado: number
   _all: number
 }
@@ -70,41 +75,46 @@ export type PrestamoCountAggregateOutputType = {
 
 export type PrestamoAvgAggregateInputType = {
   montoPrestado?: true
-  porcentajeRecarco?: true
+  porcentajeRecargo?: true
+  montoAdevolver?: true
 }
 
 export type PrestamoSumAggregateInputType = {
   montoPrestado?: true
-  porcentajeRecarco?: true
+  porcentajeRecargo?: true
+  montoAdevolver?: true
 }
 
 export type PrestamoMinAggregateInputType = {
   idPrestamo?: true
   estadoPrestamo?: true
-  ClienteId?: true
+  idCliente?: true
   montoPrestado?: true
-  porcentajeRecarco?: true
-  fechaHoraOtorigado?: true
+  porcentajeRecargo?: true
+  montoAdevolver?: true
+  fechaHoraOtorgado?: true
   fechaHoraFinalizado?: true
 }
 
 export type PrestamoMaxAggregateInputType = {
   idPrestamo?: true
   estadoPrestamo?: true
-  ClienteId?: true
+  idCliente?: true
   montoPrestado?: true
-  porcentajeRecarco?: true
-  fechaHoraOtorigado?: true
+  porcentajeRecargo?: true
+  montoAdevolver?: true
+  fechaHoraOtorgado?: true
   fechaHoraFinalizado?: true
 }
 
 export type PrestamoCountAggregateInputType = {
   idPrestamo?: true
   estadoPrestamo?: true
-  ClienteId?: true
+  idCliente?: true
   montoPrestado?: true
-  porcentajeRecarco?: true
-  fechaHoraOtorigado?: true
+  porcentajeRecargo?: true
+  montoAdevolver?: true
+  fechaHoraOtorgado?: true
   fechaHoraFinalizado?: true
   _all?: true
 }
@@ -198,10 +208,11 @@ export type PrestamoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PrestamoGroupByOutputType = {
   idPrestamo: string
   estadoPrestamo: $Enums.EstadoPrestamo
-  ClienteId: string
+  idCliente: string
   montoPrestado: runtime.Decimal
-  porcentajeRecarco: runtime.Decimal
-  fechaHoraOtorigado: Date
+  porcentajeRecargo: runtime.Decimal
+  montoAdevolver: runtime.Decimal
+  fechaHoraOtorgado: Date
   fechaHoraFinalizado: Date | null
   _count: PrestamoCountAggregateOutputType | null
   _avg: PrestamoAvgAggregateOutputType | null
@@ -231,25 +242,27 @@ export type PrestamoWhereInput = {
   NOT?: Prisma.PrestamoWhereInput | Prisma.PrestamoWhereInput[]
   idPrestamo?: Prisma.StringFilter<"Prestamo"> | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFilter<"Prestamo"> | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFilter<"Prestamo"> | string
+  idCliente?: Prisma.StringFilter<"Prestamo"> | string
   montoPrestado?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
+  porcentajeRecargo?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
   fechaHoraFinalizado?: Prisma.DateTimeNullableFilter<"Prestamo"> | Date | string | null
-  idCliente?: Prisma.XOR<Prisma.ClienteScalarRelationFilter, Prisma.ClienteWhereInput>
-  planDePago?: Prisma.PlandDePagoListRelationFilter
+  cliente?: Prisma.XOR<Prisma.ClienteScalarRelationFilter, Prisma.ClienteWhereInput>
+  planDePago?: Prisma.XOR<Prisma.PlanDePagoNullableScalarRelationFilter, Prisma.PlanDePagoWhereInput> | null
 }
 
 export type PrestamoOrderByWithRelationInput = {
   idPrestamo?: Prisma.SortOrder
   estadoPrestamo?: Prisma.SortOrder
-  ClienteId?: Prisma.SortOrder
+  idCliente?: Prisma.SortOrder
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
-  fechaHoraOtorigado?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
+  fechaHoraOtorgado?: Prisma.SortOrder
   fechaHoraFinalizado?: Prisma.SortOrderInput | Prisma.SortOrder
-  idCliente?: Prisma.ClienteOrderByWithRelationInput
-  planDePago?: Prisma.PlandDePagoOrderByRelationAggregateInput
+  cliente?: Prisma.ClienteOrderByWithRelationInput
+  planDePago?: Prisma.PlanDePagoOrderByWithRelationInput
 }
 
 export type PrestamoWhereUniqueInput = Prisma.AtLeast<{
@@ -258,22 +271,24 @@ export type PrestamoWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PrestamoWhereInput[]
   NOT?: Prisma.PrestamoWhereInput | Prisma.PrestamoWhereInput[]
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFilter<"Prestamo"> | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFilter<"Prestamo"> | string
+  idCliente?: Prisma.StringFilter<"Prestamo"> | string
   montoPrestado?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
+  porcentajeRecargo?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
   fechaHoraFinalizado?: Prisma.DateTimeNullableFilter<"Prestamo"> | Date | string | null
-  idCliente?: Prisma.XOR<Prisma.ClienteScalarRelationFilter, Prisma.ClienteWhereInput>
-  planDePago?: Prisma.PlandDePagoListRelationFilter
+  cliente?: Prisma.XOR<Prisma.ClienteScalarRelationFilter, Prisma.ClienteWhereInput>
+  planDePago?: Prisma.XOR<Prisma.PlanDePagoNullableScalarRelationFilter, Prisma.PlanDePagoWhereInput> | null
 }, "idPrestamo">
 
 export type PrestamoOrderByWithAggregationInput = {
   idPrestamo?: Prisma.SortOrder
   estadoPrestamo?: Prisma.SortOrder
-  ClienteId?: Prisma.SortOrder
+  idCliente?: Prisma.SortOrder
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
-  fechaHoraOtorigado?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
+  fechaHoraOtorgado?: Prisma.SortOrder
   fechaHoraFinalizado?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PrestamoCountOrderByAggregateInput
   _avg?: Prisma.PrestamoAvgOrderByAggregateInput
@@ -288,10 +303,11 @@ export type PrestamoScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PrestamoScalarWhereWithAggregatesInput | Prisma.PrestamoScalarWhereWithAggregatesInput[]
   idPrestamo?: Prisma.StringWithAggregatesFilter<"Prestamo"> | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoWithAggregatesFilter<"Prestamo"> | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringWithAggregatesFilter<"Prestamo"> | string
+  idCliente?: Prisma.StringWithAggregatesFilter<"Prestamo"> | string
   montoPrestado?: Prisma.DecimalWithAggregatesFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalWithAggregatesFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeWithAggregatesFilter<"Prestamo"> | Date | string
+  porcentajeRecargo?: Prisma.DecimalWithAggregatesFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalWithAggregatesFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeWithAggregatesFilter<"Prestamo"> | Date | string
   fechaHoraFinalizado?: Prisma.DateTimeNullableWithAggregatesFilter<"Prestamo"> | Date | string | null
 }
 
@@ -299,53 +315,58 @@ export type PrestamoCreateInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
-  idCliente: Prisma.ClienteCreateNestedOneWithoutPrestamosInput
-  planDePago?: Prisma.PlandDePagoCreateNestedManyWithoutIdPrestamoInput
+  cliente: Prisma.ClienteCreateNestedOneWithoutPrestamosInput
+  planDePago?: Prisma.PlanDePagoCreateNestedOneWithoutPrestamoInput
 }
 
 export type PrestamoUncheckedCreateInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
-  ClienteId: string
+  idCliente: string
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
-  planDePago?: Prisma.PlandDePagoUncheckedCreateNestedManyWithoutIdPrestamoInput
+  planDePago?: Prisma.PlanDePagoUncheckedCreateNestedOneWithoutPrestamoInput
 }
 
 export type PrestamoUpdateInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  idCliente?: Prisma.ClienteUpdateOneRequiredWithoutPrestamosNestedInput
-  planDePago?: Prisma.PlandDePagoUpdateManyWithoutIdPrestamoNestedInput
+  cliente?: Prisma.ClienteUpdateOneRequiredWithoutPrestamosNestedInput
+  planDePago?: Prisma.PlanDePagoUpdateOneWithoutPrestamoNestedInput
 }
 
 export type PrestamoUncheckedUpdateInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFieldUpdateOperationsInput | string
+  idCliente?: Prisma.StringFieldUpdateOperationsInput | string
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planDePago?: Prisma.PlandDePagoUncheckedUpdateManyWithoutIdPrestamoNestedInput
+  planDePago?: Prisma.PlanDePagoUncheckedUpdateOneWithoutPrestamoNestedInput
 }
 
 export type PrestamoCreateManyInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
-  ClienteId: string
+  idCliente: string
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
 }
 
@@ -353,18 +374,20 @@ export type PrestamoUpdateManyMutationInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PrestamoUncheckedUpdateManyInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFieldUpdateOperationsInput | string
+  idCliente?: Prisma.StringFieldUpdateOperationsInput | string
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -381,41 +404,46 @@ export type PrestamoOrderByRelationAggregateInput = {
 export type PrestamoCountOrderByAggregateInput = {
   idPrestamo?: Prisma.SortOrder
   estadoPrestamo?: Prisma.SortOrder
-  ClienteId?: Prisma.SortOrder
+  idCliente?: Prisma.SortOrder
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
-  fechaHoraOtorigado?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
+  fechaHoraOtorgado?: Prisma.SortOrder
   fechaHoraFinalizado?: Prisma.SortOrder
 }
 
 export type PrestamoAvgOrderByAggregateInput = {
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
 }
 
 export type PrestamoMaxOrderByAggregateInput = {
   idPrestamo?: Prisma.SortOrder
   estadoPrestamo?: Prisma.SortOrder
-  ClienteId?: Prisma.SortOrder
+  idCliente?: Prisma.SortOrder
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
-  fechaHoraOtorigado?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
+  fechaHoraOtorgado?: Prisma.SortOrder
   fechaHoraFinalizado?: Prisma.SortOrder
 }
 
 export type PrestamoMinOrderByAggregateInput = {
   idPrestamo?: Prisma.SortOrder
   estadoPrestamo?: Prisma.SortOrder
-  ClienteId?: Prisma.SortOrder
+  idCliente?: Prisma.SortOrder
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
-  fechaHoraOtorigado?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
+  fechaHoraOtorgado?: Prisma.SortOrder
   fechaHoraFinalizado?: Prisma.SortOrder
 }
 
 export type PrestamoSumOrderByAggregateInput = {
   montoPrestado?: Prisma.SortOrder
-  porcentajeRecarco?: Prisma.SortOrder
+  porcentajeRecargo?: Prisma.SortOrder
+  montoAdevolver?: Prisma.SortOrder
 }
 
 export type PrestamoScalarRelationFilter = {
@@ -423,45 +451,45 @@ export type PrestamoScalarRelationFilter = {
   isNot?: Prisma.PrestamoWhereInput
 }
 
-export type PrestamoCreateNestedManyWithoutIdClienteInput = {
-  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput> | Prisma.PrestamoCreateWithoutIdClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutIdClienteInput[]
-  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutIdClienteInput | Prisma.PrestamoCreateOrConnectWithoutIdClienteInput[]
-  createMany?: Prisma.PrestamoCreateManyIdClienteInputEnvelope
+export type PrestamoCreateNestedManyWithoutClienteInput = {
+  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput> | Prisma.PrestamoCreateWithoutClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutClienteInput[]
+  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutClienteInput | Prisma.PrestamoCreateOrConnectWithoutClienteInput[]
+  createMany?: Prisma.PrestamoCreateManyClienteInputEnvelope
   connect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
 }
 
-export type PrestamoUncheckedCreateNestedManyWithoutIdClienteInput = {
-  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput> | Prisma.PrestamoCreateWithoutIdClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutIdClienteInput[]
-  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutIdClienteInput | Prisma.PrestamoCreateOrConnectWithoutIdClienteInput[]
-  createMany?: Prisma.PrestamoCreateManyIdClienteInputEnvelope
+export type PrestamoUncheckedCreateNestedManyWithoutClienteInput = {
+  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput> | Prisma.PrestamoCreateWithoutClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutClienteInput[]
+  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutClienteInput | Prisma.PrestamoCreateOrConnectWithoutClienteInput[]
+  createMany?: Prisma.PrestamoCreateManyClienteInputEnvelope
   connect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
 }
 
-export type PrestamoUpdateManyWithoutIdClienteNestedInput = {
-  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput> | Prisma.PrestamoCreateWithoutIdClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutIdClienteInput[]
-  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutIdClienteInput | Prisma.PrestamoCreateOrConnectWithoutIdClienteInput[]
-  upsert?: Prisma.PrestamoUpsertWithWhereUniqueWithoutIdClienteInput | Prisma.PrestamoUpsertWithWhereUniqueWithoutIdClienteInput[]
-  createMany?: Prisma.PrestamoCreateManyIdClienteInputEnvelope
+export type PrestamoUpdateManyWithoutClienteNestedInput = {
+  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput> | Prisma.PrestamoCreateWithoutClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutClienteInput[]
+  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutClienteInput | Prisma.PrestamoCreateOrConnectWithoutClienteInput[]
+  upsert?: Prisma.PrestamoUpsertWithWhereUniqueWithoutClienteInput | Prisma.PrestamoUpsertWithWhereUniqueWithoutClienteInput[]
+  createMany?: Prisma.PrestamoCreateManyClienteInputEnvelope
   set?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   disconnect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   delete?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   connect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
-  update?: Prisma.PrestamoUpdateWithWhereUniqueWithoutIdClienteInput | Prisma.PrestamoUpdateWithWhereUniqueWithoutIdClienteInput[]
-  updateMany?: Prisma.PrestamoUpdateManyWithWhereWithoutIdClienteInput | Prisma.PrestamoUpdateManyWithWhereWithoutIdClienteInput[]
+  update?: Prisma.PrestamoUpdateWithWhereUniqueWithoutClienteInput | Prisma.PrestamoUpdateWithWhereUniqueWithoutClienteInput[]
+  updateMany?: Prisma.PrestamoUpdateManyWithWhereWithoutClienteInput | Prisma.PrestamoUpdateManyWithWhereWithoutClienteInput[]
   deleteMany?: Prisma.PrestamoScalarWhereInput | Prisma.PrestamoScalarWhereInput[]
 }
 
-export type PrestamoUncheckedUpdateManyWithoutIdClienteNestedInput = {
-  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput> | Prisma.PrestamoCreateWithoutIdClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutIdClienteInput[]
-  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutIdClienteInput | Prisma.PrestamoCreateOrConnectWithoutIdClienteInput[]
-  upsert?: Prisma.PrestamoUpsertWithWhereUniqueWithoutIdClienteInput | Prisma.PrestamoUpsertWithWhereUniqueWithoutIdClienteInput[]
-  createMany?: Prisma.PrestamoCreateManyIdClienteInputEnvelope
+export type PrestamoUncheckedUpdateManyWithoutClienteNestedInput = {
+  create?: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput> | Prisma.PrestamoCreateWithoutClienteInput[] | Prisma.PrestamoUncheckedCreateWithoutClienteInput[]
+  connectOrCreate?: Prisma.PrestamoCreateOrConnectWithoutClienteInput | Prisma.PrestamoCreateOrConnectWithoutClienteInput[]
+  upsert?: Prisma.PrestamoUpsertWithWhereUniqueWithoutClienteInput | Prisma.PrestamoUpsertWithWhereUniqueWithoutClienteInput[]
+  createMany?: Prisma.PrestamoCreateManyClienteInputEnvelope
   set?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   disconnect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   delete?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
   connect?: Prisma.PrestamoWhereUniqueInput | Prisma.PrestamoWhereUniqueInput[]
-  update?: Prisma.PrestamoUpdateWithWhereUniqueWithoutIdClienteInput | Prisma.PrestamoUpdateWithWhereUniqueWithoutIdClienteInput[]
-  updateMany?: Prisma.PrestamoUpdateManyWithWhereWithoutIdClienteInput | Prisma.PrestamoUpdateManyWithWhereWithoutIdClienteInput[]
+  update?: Prisma.PrestamoUpdateWithWhereUniqueWithoutClienteInput | Prisma.PrestamoUpdateWithWhereUniqueWithoutClienteInput[]
+  updateMany?: Prisma.PrestamoUpdateManyWithWhereWithoutClienteInput | Prisma.PrestamoUpdateManyWithWhereWithoutClienteInput[]
   deleteMany?: Prisma.PrestamoScalarWhereInput | Prisma.PrestamoScalarWhereInput[]
 }
 
@@ -499,50 +527,52 @@ export type PrestamoUpdateOneRequiredWithoutPlanDePagoNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PrestamoUpdateToOneWithWhereWithoutPlanDePagoInput, Prisma.PrestamoUpdateWithoutPlanDePagoInput>, Prisma.PrestamoUncheckedUpdateWithoutPlanDePagoInput>
 }
 
-export type PrestamoCreateWithoutIdClienteInput = {
+export type PrestamoCreateWithoutClienteInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
-  planDePago?: Prisma.PlandDePagoCreateNestedManyWithoutIdPrestamoInput
+  planDePago?: Prisma.PlanDePagoCreateNestedOneWithoutPrestamoInput
 }
 
-export type PrestamoUncheckedCreateWithoutIdClienteInput = {
+export type PrestamoUncheckedCreateWithoutClienteInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
-  planDePago?: Prisma.PlandDePagoUncheckedCreateNestedManyWithoutIdPrestamoInput
+  planDePago?: Prisma.PlanDePagoUncheckedCreateNestedOneWithoutPrestamoInput
 }
 
-export type PrestamoCreateOrConnectWithoutIdClienteInput = {
+export type PrestamoCreateOrConnectWithoutClienteInput = {
   where: Prisma.PrestamoWhereUniqueInput
-  create: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput>
+  create: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput>
 }
 
-export type PrestamoCreateManyIdClienteInputEnvelope = {
-  data: Prisma.PrestamoCreateManyIdClienteInput | Prisma.PrestamoCreateManyIdClienteInput[]
+export type PrestamoCreateManyClienteInputEnvelope = {
+  data: Prisma.PrestamoCreateManyClienteInput | Prisma.PrestamoCreateManyClienteInput[]
   skipDuplicates?: boolean
 }
 
-export type PrestamoUpsertWithWhereUniqueWithoutIdClienteInput = {
+export type PrestamoUpsertWithWhereUniqueWithoutClienteInput = {
   where: Prisma.PrestamoWhereUniqueInput
-  update: Prisma.XOR<Prisma.PrestamoUpdateWithoutIdClienteInput, Prisma.PrestamoUncheckedUpdateWithoutIdClienteInput>
-  create: Prisma.XOR<Prisma.PrestamoCreateWithoutIdClienteInput, Prisma.PrestamoUncheckedCreateWithoutIdClienteInput>
+  update: Prisma.XOR<Prisma.PrestamoUpdateWithoutClienteInput, Prisma.PrestamoUncheckedUpdateWithoutClienteInput>
+  create: Prisma.XOR<Prisma.PrestamoCreateWithoutClienteInput, Prisma.PrestamoUncheckedCreateWithoutClienteInput>
 }
 
-export type PrestamoUpdateWithWhereUniqueWithoutIdClienteInput = {
+export type PrestamoUpdateWithWhereUniqueWithoutClienteInput = {
   where: Prisma.PrestamoWhereUniqueInput
-  data: Prisma.XOR<Prisma.PrestamoUpdateWithoutIdClienteInput, Prisma.PrestamoUncheckedUpdateWithoutIdClienteInput>
+  data: Prisma.XOR<Prisma.PrestamoUpdateWithoutClienteInput, Prisma.PrestamoUncheckedUpdateWithoutClienteInput>
 }
 
-export type PrestamoUpdateManyWithWhereWithoutIdClienteInput = {
+export type PrestamoUpdateManyWithWhereWithoutClienteInput = {
   where: Prisma.PrestamoScalarWhereInput
-  data: Prisma.XOR<Prisma.PrestamoUpdateManyMutationInput, Prisma.PrestamoUncheckedUpdateManyWithoutIdClienteInput>
+  data: Prisma.XOR<Prisma.PrestamoUpdateManyMutationInput, Prisma.PrestamoUncheckedUpdateManyWithoutClienteInput>
 }
 
 export type PrestamoScalarWhereInput = {
@@ -551,10 +581,11 @@ export type PrestamoScalarWhereInput = {
   NOT?: Prisma.PrestamoScalarWhereInput | Prisma.PrestamoScalarWhereInput[]
   idPrestamo?: Prisma.StringFilter<"Prestamo"> | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFilter<"Prestamo"> | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFilter<"Prestamo"> | string
+  idCliente?: Prisma.StringFilter<"Prestamo"> | string
   montoPrestado?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
+  porcentajeRecargo?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFilter<"Prestamo"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
   fechaHoraFinalizado?: Prisma.DateTimeNullableFilter<"Prestamo"> | Date | string | null
 }
 
@@ -562,19 +593,21 @@ export type PrestamoCreateWithoutPlanDePagoInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
-  idCliente: Prisma.ClienteCreateNestedOneWithoutPrestamosInput
+  cliente: Prisma.ClienteCreateNestedOneWithoutPrestamosInput
 }
 
 export type PrestamoUncheckedCreateWithoutPlanDePagoInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
-  ClienteId: string
+  idCliente: string
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
 }
 
@@ -598,162 +631,142 @@ export type PrestamoUpdateWithoutPlanDePagoInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  idCliente?: Prisma.ClienteUpdateOneRequiredWithoutPrestamosNestedInput
+  cliente?: Prisma.ClienteUpdateOneRequiredWithoutPrestamosNestedInput
 }
 
 export type PrestamoUncheckedUpdateWithoutPlanDePagoInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
-  ClienteId?: Prisma.StringFieldUpdateOperationsInput | string
+  idCliente?: Prisma.StringFieldUpdateOperationsInput | string
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type PrestamoCreateManyIdClienteInput = {
+export type PrestamoCreateManyClienteInput = {
   idPrestamo?: string
   estadoPrestamo?: $Enums.EstadoPrestamo
   montoPrestado: runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Date | string
+  porcentajeRecargo: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Date | string
   fechaHoraFinalizado?: Date | string | null
 }
 
-export type PrestamoUpdateWithoutIdClienteInput = {
+export type PrestamoUpdateWithoutClienteInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planDePago?: Prisma.PlandDePagoUpdateManyWithoutIdPrestamoNestedInput
+  planDePago?: Prisma.PlanDePagoUpdateOneWithoutPrestamoNestedInput
 }
 
-export type PrestamoUncheckedUpdateWithoutIdClienteInput = {
+export type PrestamoUncheckedUpdateWithoutClienteInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  planDePago?: Prisma.PlandDePagoUncheckedUpdateManyWithoutIdPrestamoNestedInput
+  planDePago?: Prisma.PlanDePagoUncheckedUpdateOneWithoutPrestamoNestedInput
 }
 
-export type PrestamoUncheckedUpdateManyWithoutIdClienteInput = {
+export type PrestamoUncheckedUpdateManyWithoutClienteInput = {
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
   estadoPrestamo?: Prisma.EnumEstadoPrestamoFieldUpdateOperationsInput | $Enums.EstadoPrestamo
   montoPrestado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  porcentajeRecarco?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fechaHoraOtorigado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  porcentajeRecargo?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoAdevolver?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaHoraOtorgado?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraFinalizado?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-
-/**
- * Count Type PrestamoCountOutputType
- */
-
-export type PrestamoCountOutputType = {
-  planDePago: number
-}
-
-export type PrestamoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  planDePago?: boolean | PrestamoCountOutputTypeCountPlanDePagoArgs
-}
-
-/**
- * PrestamoCountOutputType without action
- */
-export type PrestamoCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PrestamoCountOutputType
-   */
-  select?: Prisma.PrestamoCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * PrestamoCountOutputType without action
- */
-export type PrestamoCountOutputTypeCountPlanDePagoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PlandDePagoWhereInput
-}
 
 
 export type PrestamoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPrestamo?: boolean
   estadoPrestamo?: boolean
-  ClienteId?: boolean
+  idCliente?: boolean
   montoPrestado?: boolean
-  porcentajeRecarco?: boolean
-  fechaHoraOtorigado?: boolean
+  porcentajeRecargo?: boolean
+  montoAdevolver?: boolean
+  fechaHoraOtorgado?: boolean
   fechaHoraFinalizado?: boolean
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
   planDePago?: boolean | Prisma.Prestamo$planDePagoArgs<ExtArgs>
-  _count?: boolean | Prisma.PrestamoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPrestamo?: boolean
   estadoPrestamo?: boolean
-  ClienteId?: boolean
+  idCliente?: boolean
   montoPrestado?: boolean
-  porcentajeRecarco?: boolean
-  fechaHoraOtorigado?: boolean
+  porcentajeRecargo?: boolean
+  montoAdevolver?: boolean
+  fechaHoraOtorgado?: boolean
   fechaHoraFinalizado?: boolean
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPrestamo?: boolean
   estadoPrestamo?: boolean
-  ClienteId?: boolean
+  idCliente?: boolean
   montoPrestado?: boolean
-  porcentajeRecarco?: boolean
-  fechaHoraOtorigado?: boolean
+  porcentajeRecargo?: boolean
+  montoAdevolver?: boolean
+  fechaHoraOtorgado?: boolean
   fechaHoraFinalizado?: boolean
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectScalar = {
   idPrestamo?: boolean
   estadoPrestamo?: boolean
-  ClienteId?: boolean
+  idCliente?: boolean
   montoPrestado?: boolean
-  porcentajeRecarco?: boolean
-  fechaHoraOtorigado?: boolean
+  porcentajeRecargo?: boolean
+  montoAdevolver?: boolean
+  fechaHoraOtorgado?: boolean
   fechaHoraFinalizado?: boolean
 }
 
-export type PrestamoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idPrestamo" | "estadoPrestamo" | "ClienteId" | "montoPrestado" | "porcentajeRecarco" | "fechaHoraOtorigado" | "fechaHoraFinalizado", ExtArgs["result"]["prestamo"]>
+export type PrestamoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idPrestamo" | "estadoPrestamo" | "idCliente" | "montoPrestado" | "porcentajeRecargo" | "montoAdevolver" | "fechaHoraOtorgado" | "fechaHoraFinalizado", ExtArgs["result"]["prestamo"]>
 export type PrestamoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
   planDePago?: boolean | Prisma.Prestamo$planDePagoArgs<ExtArgs>
-  _count?: boolean | Prisma.PrestamoCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PrestamoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
 }
 export type PrestamoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  idCliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
+  cliente?: boolean | Prisma.ClienteDefaultArgs<ExtArgs>
 }
 
 export type $PrestamoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Prestamo"
   objects: {
-    idCliente: Prisma.$ClientePayload<ExtArgs>
-    planDePago: Prisma.$PlandDePagoPayload<ExtArgs>[]
+    cliente: Prisma.$ClientePayload<ExtArgs>
+    planDePago: Prisma.$PlanDePagoPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     idPrestamo: string
     estadoPrestamo: $Enums.EstadoPrestamo
-    ClienteId: string
+    idCliente: string
     montoPrestado: runtime.Decimal
-    porcentajeRecarco: runtime.Decimal
-    fechaHoraOtorigado: Date
+    porcentajeRecargo: runtime.Decimal
+    montoAdevolver: runtime.Decimal
+    fechaHoraOtorgado: Date
     fechaHoraFinalizado: Date | null
   }, ExtArgs["result"]["prestamo"]>
   composites: {}
@@ -1149,8 +1162,8 @@ readonly fields: PrestamoFieldRefs;
  */
 export interface Prisma__PrestamoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  idCliente<T extends Prisma.ClienteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClienteDefaultArgs<ExtArgs>>): Prisma.Prisma__ClienteClient<runtime.Types.Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  planDePago<T extends Prisma.Prestamo$planDePagoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prestamo$planDePagoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlandDePagoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cliente<T extends Prisma.ClienteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClienteDefaultArgs<ExtArgs>>): Prisma.Prisma__ClienteClient<runtime.Types.Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  planDePago<T extends Prisma.Prestamo$planDePagoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prestamo$planDePagoArgs<ExtArgs>>): Prisma.Prisma__PlanDePagoClient<runtime.Types.Result.GetResult<Prisma.$PlanDePagoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1182,10 +1195,11 @@ export interface Prisma__PrestamoClient<T, Null = never, ExtArgs extends runtime
 export interface PrestamoFieldRefs {
   readonly idPrestamo: Prisma.FieldRef<"Prestamo", 'String'>
   readonly estadoPrestamo: Prisma.FieldRef<"Prestamo", 'EstadoPrestamo'>
-  readonly ClienteId: Prisma.FieldRef<"Prestamo", 'String'>
+  readonly idCliente: Prisma.FieldRef<"Prestamo", 'String'>
   readonly montoPrestado: Prisma.FieldRef<"Prestamo", 'Decimal'>
-  readonly porcentajeRecarco: Prisma.FieldRef<"Prestamo", 'Decimal'>
-  readonly fechaHoraOtorigado: Prisma.FieldRef<"Prestamo", 'DateTime'>
+  readonly porcentajeRecargo: Prisma.FieldRef<"Prestamo", 'Decimal'>
+  readonly montoAdevolver: Prisma.FieldRef<"Prestamo", 'Decimal'>
+  readonly fechaHoraOtorgado: Prisma.FieldRef<"Prestamo", 'DateTime'>
   readonly fechaHoraFinalizado: Prisma.FieldRef<"Prestamo", 'DateTime'>
 }
     
@@ -1592,23 +1606,18 @@ export type PrestamoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
  */
 export type Prestamo$planDePagoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PlandDePago
+   * Select specific fields to fetch from the PlanDePago
    */
-  select?: Prisma.PlandDePagoSelect<ExtArgs> | null
+  select?: Prisma.PlanDePagoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PlandDePago
+   * Omit specific fields from the PlanDePago
    */
-  omit?: Prisma.PlandDePagoOmit<ExtArgs> | null
+  omit?: Prisma.PlanDePagoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PlandDePagoInclude<ExtArgs> | null
-  where?: Prisma.PlandDePagoWhereInput
-  orderBy?: Prisma.PlandDePagoOrderByWithRelationInput | Prisma.PlandDePagoOrderByWithRelationInput[]
-  cursor?: Prisma.PlandDePagoWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PlandDePagoScalarFieldEnum | Prisma.PlandDePagoScalarFieldEnum[]
+  include?: Prisma.PlanDePagoInclude<ExtArgs> | null
+  where?: Prisma.PlanDePagoWhereInput
 }
 
 /**

@@ -399,7 +399,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Cliente: 'Cliente',
   Prestamo: 'Prestamo',
-  PlandDePago: 'PlandDePago',
+  PlanDePago: 'PlanDePago',
   Cuota: 'Cuota'
 } as const
 
@@ -416,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "cliente" | "prestamo" | "plandDePago" | "cuota"
+    modelProps: "cliente" | "prestamo" | "planDePago" | "cuota"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -568,77 +568,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    PlandDePago: {
-      payload: Prisma.$PlandDePagoPayload<ExtArgs>
-      fields: Prisma.PlandDePagoFieldRefs
+    PlanDePago: {
+      payload: Prisma.$PlanDePagoPayload<ExtArgs>
+      fields: Prisma.PlanDePagoFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.PlandDePagoFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload> | null
+          args: Prisma.PlanDePagoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.PlandDePagoFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         findFirst: {
-          args: Prisma.PlandDePagoFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload> | null
+          args: Prisma.PlanDePagoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.PlandDePagoFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         findMany: {
-          args: Prisma.PlandDePagoFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>[]
+          args: Prisma.PlanDePagoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>[]
         }
         create: {
-          args: Prisma.PlandDePagoCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         createMany: {
-          args: Prisma.PlandDePagoCreateManyArgs<ExtArgs>
+          args: Prisma.PlanDePagoCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.PlandDePagoCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>[]
+          args: Prisma.PlanDePagoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>[]
         }
         delete: {
-          args: Prisma.PlandDePagoDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         update: {
-          args: Prisma.PlandDePagoUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         deleteMany: {
-          args: Prisma.PlandDePagoDeleteManyArgs<ExtArgs>
+          args: Prisma.PlanDePagoDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.PlandDePagoUpdateManyArgs<ExtArgs>
+          args: Prisma.PlanDePagoUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.PlandDePagoUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>[]
+          args: Prisma.PlanDePagoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>[]
         }
         upsert: {
-          args: Prisma.PlandDePagoUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlandDePagoPayload>
+          args: Prisma.PlanDePagoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlanDePagoPayload>
         }
         aggregate: {
-          args: Prisma.PlandDePagoAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePlandDePago>
+          args: Prisma.PlanDePagoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlanDePago>
         }
         groupBy: {
-          args: Prisma.PlandDePagoGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PlandDePagoGroupByOutputType>[]
+          args: Prisma.PlanDePagoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlanDePagoGroupByOutputType>[]
         }
         count: {
-          args: Prisma.PlandDePagoCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PlandDePagoCountAggregateOutputType> | number
+          args: Prisma.PlanDePagoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlanDePagoCountAggregateOutputType> | number
         }
       }
     }
@@ -769,24 +769,25 @@ export type ClienteScalarFieldEnum = (typeof ClienteScalarFieldEnum)[keyof typeo
 export const PrestamoScalarFieldEnum = {
   idPrestamo: 'idPrestamo',
   estadoPrestamo: 'estadoPrestamo',
-  ClienteId: 'ClienteId',
+  idCliente: 'idCliente',
   montoPrestado: 'montoPrestado',
-  porcentajeRecarco: 'porcentajeRecarco',
-  fechaHoraOtorigado: 'fechaHoraOtorigado',
+  porcentajeRecargo: 'porcentajeRecargo',
+  montoAdevolver: 'montoAdevolver',
+  fechaHoraOtorgado: 'fechaHoraOtorgado',
   fechaHoraFinalizado: 'fechaHoraFinalizado'
 } as const
 
 export type PrestamoScalarFieldEnum = (typeof PrestamoScalarFieldEnum)[keyof typeof PrestamoScalarFieldEnum]
 
 
-export const PlandDePagoScalarFieldEnum = {
+export const PlanDePagoScalarFieldEnum = {
   idPlanDePago: 'idPlanDePago',
-  PrestamoId: 'PrestamoId',
   cantidadCuotas: 'cantidadCuotas',
-  diasEntreCuotas: 'diasEntreCuotas'
+  diasEntreCuotas: 'diasEntreCuotas',
+  idPrestamo: 'idPrestamo'
 } as const
 
-export type PlandDePagoScalarFieldEnum = (typeof PlandDePagoScalarFieldEnum)[keyof typeof PlandDePagoScalarFieldEnum]
+export type PlanDePagoScalarFieldEnum = (typeof PlanDePagoScalarFieldEnum)[keyof typeof PlanDePagoScalarFieldEnum]
 
 
 export const CuotaScalarFieldEnum = {
@@ -798,7 +799,8 @@ export const CuotaScalarFieldEnum = {
   montoPagado: 'montoPagado',
   fechaInicioCuota: 'fechaInicioCuota',
   fechaVencimientoCuota: 'fechaVencimientoCuota',
-  fechaHoraPagada: 'fechaHoraPagada'
+  fechaHoraPagada: 'fechaHoraPagada',
+  idPlanDePago: 'idPlanDePago'
 } as const
 
 export type CuotaScalarFieldEnum = (typeof CuotaScalarFieldEnum)[keyof typeof CuotaScalarFieldEnum]
@@ -1098,7 +1100,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   cliente?: Prisma.ClienteOmit
   prestamo?: Prisma.PrestamoOmit
-  plandDePago?: Prisma.PlandDePagoOmit
+  planDePago?: Prisma.PlanDePagoOmit
   cuota?: Prisma.CuotaOmit
 }
 

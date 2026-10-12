@@ -182,7 +182,7 @@ export type ClienteWhereInput = {
   apellido?: Prisma.StringFilter<"Cliente"> | string
   numeroDNI?: Prisma.StringFilter<"Cliente"> | string
   email?: Prisma.StringNullableFilter<"Cliente"> | string | null
-  Prestamos?: Prisma.PrestamoListRelationFilter
+  prestamos?: Prisma.PrestamoListRelationFilter
 }
 
 export type ClienteOrderByWithRelationInput = {
@@ -191,7 +191,7 @@ export type ClienteOrderByWithRelationInput = {
   apellido?: Prisma.SortOrder
   numeroDNI?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
-  Prestamos?: Prisma.PrestamoOrderByRelationAggregateInput
+  prestamos?: Prisma.PrestamoOrderByRelationAggregateInput
 }
 
 export type ClienteWhereUniqueInput = Prisma.AtLeast<{
@@ -203,8 +203,8 @@ export type ClienteWhereUniqueInput = Prisma.AtLeast<{
   nombre?: Prisma.StringFilter<"Cliente"> | string
   apellido?: Prisma.StringFilter<"Cliente"> | string
   email?: Prisma.StringNullableFilter<"Cliente"> | string | null
-  Prestamos?: Prisma.PrestamoListRelationFilter
-}, "idCliente" | "idCliente" | "numeroDNI">
+  prestamos?: Prisma.PrestamoListRelationFilter
+}, "idCliente" | "numeroDNI">
 
 export type ClienteOrderByWithAggregationInput = {
   idCliente?: Prisma.SortOrder
@@ -234,7 +234,7 @@ export type ClienteCreateInput = {
   apellido: string
   numeroDNI: string
   email?: string | null
-  Prestamos?: Prisma.PrestamoCreateNestedManyWithoutIdClienteInput
+  prestamos?: Prisma.PrestamoCreateNestedManyWithoutClienteInput
 }
 
 export type ClienteUncheckedCreateInput = {
@@ -243,7 +243,7 @@ export type ClienteUncheckedCreateInput = {
   apellido: string
   numeroDNI: string
   email?: string | null
-  Prestamos?: Prisma.PrestamoUncheckedCreateNestedManyWithoutIdClienteInput
+  prestamos?: Prisma.PrestamoUncheckedCreateNestedManyWithoutClienteInput
 }
 
 export type ClienteUpdateInput = {
@@ -252,7 +252,7 @@ export type ClienteUpdateInput = {
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   numeroDNI?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prestamos?: Prisma.PrestamoUpdateManyWithoutIdClienteNestedInput
+  prestamos?: Prisma.PrestamoUpdateManyWithoutClienteNestedInput
 }
 
 export type ClienteUncheckedUpdateInput = {
@@ -261,7 +261,7 @@ export type ClienteUncheckedUpdateInput = {
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
   numeroDNI?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  Prestamos?: Prisma.PrestamoUncheckedUpdateManyWithoutIdClienteNestedInput
+  prestamos?: Prisma.PrestamoUncheckedUpdateManyWithoutClienteNestedInput
 }
 
 export type ClienteCreateManyInput = {
@@ -393,11 +393,11 @@ export type ClienteUncheckedUpdateWithoutPrestamosInput = {
  */
 
 export type ClienteCountOutputType = {
-  Prestamos: number
+  prestamos: number
 }
 
 export type ClienteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Prestamos?: boolean | ClienteCountOutputTypeCountPrestamosArgs
+  prestamos?: boolean | ClienteCountOutputTypeCountPrestamosArgs
 }
 
 /**
@@ -424,7 +424,7 @@ export type ClienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   apellido?: boolean
   numeroDNI?: boolean
   email?: boolean
-  Prestamos?: boolean | Prisma.Cliente$PrestamosArgs<ExtArgs>
+  prestamos?: boolean | Prisma.Cliente$prestamosArgs<ExtArgs>
   _count?: boolean | Prisma.ClienteCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cliente"]>
 
@@ -454,7 +454,7 @@ export type ClienteSelectScalar = {
 
 export type ClienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idCliente" | "nombre" | "apellido" | "numeroDNI" | "email", ExtArgs["result"]["cliente"]>
 export type ClienteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Prestamos?: boolean | Prisma.Cliente$PrestamosArgs<ExtArgs>
+  prestamos?: boolean | Prisma.Cliente$prestamosArgs<ExtArgs>
   _count?: boolean | Prisma.ClienteCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ClienteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -463,7 +463,7 @@ export type ClienteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $ClientePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Cliente"
   objects: {
-    Prestamos: Prisma.$PrestamoPayload<ExtArgs>[]
+    prestamos: Prisma.$PrestamoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     idCliente: string
@@ -865,7 +865,7 @@ readonly fields: ClienteFieldRefs;
  */
 export interface Prisma__ClienteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Prestamos<T extends Prisma.Cliente$PrestamosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Cliente$PrestamosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrestamoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  prestamos<T extends Prisma.Cliente$prestamosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Cliente$prestamosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrestamoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1293,9 +1293,9 @@ export type ClienteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Cliente.Prestamos
+ * Cliente.prestamos
  */
-export type Cliente$PrestamosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Cliente$prestamosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Prestamo
    */

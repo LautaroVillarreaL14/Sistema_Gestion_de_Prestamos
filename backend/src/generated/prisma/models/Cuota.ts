@@ -48,6 +48,7 @@ export type CuotaMinAggregateOutputType = {
   fechaInicioCuota: Date | null
   fechaVencimientoCuota: Date | null
   fechaHoraPagada: Date | null
+  idPlanDePago: string | null
 }
 
 export type CuotaMaxAggregateOutputType = {
@@ -60,6 +61,7 @@ export type CuotaMaxAggregateOutputType = {
   fechaInicioCuota: Date | null
   fechaVencimientoCuota: Date | null
   fechaHoraPagada: Date | null
+  idPlanDePago: string | null
 }
 
 export type CuotaCountAggregateOutputType = {
@@ -72,6 +74,7 @@ export type CuotaCountAggregateOutputType = {
   fechaInicioCuota: number
   fechaVencimientoCuota: number
   fechaHoraPagada: number
+  idPlanDePago: number
   _all: number
 }
 
@@ -98,6 +101,7 @@ export type CuotaMinAggregateInputType = {
   fechaInicioCuota?: true
   fechaVencimientoCuota?: true
   fechaHoraPagada?: true
+  idPlanDePago?: true
 }
 
 export type CuotaMaxAggregateInputType = {
@@ -110,6 +114,7 @@ export type CuotaMaxAggregateInputType = {
   fechaInicioCuota?: true
   fechaVencimientoCuota?: true
   fechaHoraPagada?: true
+  idPlanDePago?: true
 }
 
 export type CuotaCountAggregateInputType = {
@@ -122,6 +127,7 @@ export type CuotaCountAggregateInputType = {
   fechaInicioCuota?: true
   fechaVencimientoCuota?: true
   fechaHoraPagada?: true
+  idPlanDePago?: true
   _all?: true
 }
 
@@ -221,6 +227,7 @@ export type CuotaGroupByOutputType = {
   fechaInicioCuota: Date
   fechaVencimientoCuota: Date
   fechaHoraPagada: Date | null
+  idPlanDePago: string
   _count: CuotaCountAggregateOutputType | null
   _avg: CuotaAvgAggregateOutputType | null
   _sum: CuotaSumAggregateOutputType | null
@@ -256,6 +263,8 @@ export type CuotaWhereInput = {
   fechaInicioCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
   fechaHoraPagada?: Prisma.DateTimeNullableFilter<"Cuota"> | Date | string | null
+  idPlanDePago?: Prisma.StringFilter<"Cuota"> | string
+  planDePago?: Prisma.XOR<Prisma.PlanDePagoScalarRelationFilter, Prisma.PlanDePagoWhereInput>
 }
 
 export type CuotaOrderByWithRelationInput = {
@@ -268,10 +277,13 @@ export type CuotaOrderByWithRelationInput = {
   fechaInicioCuota?: Prisma.SortOrder
   fechaVencimientoCuota?: Prisma.SortOrder
   fechaHoraPagada?: Prisma.SortOrderInput | Prisma.SortOrder
+  idPlanDePago?: Prisma.SortOrder
+  planDePago?: Prisma.PlanDePagoOrderByWithRelationInput
 }
 
 export type CuotaWhereUniqueInput = Prisma.AtLeast<{
   idCuota?: string
+  idPlanDePago_numeroDeCuota?: Prisma.CuotaIdPlanDePagoNumeroDeCuotaCompoundUniqueInput
   AND?: Prisma.CuotaWhereInput | Prisma.CuotaWhereInput[]
   OR?: Prisma.CuotaWhereInput[]
   NOT?: Prisma.CuotaWhereInput | Prisma.CuotaWhereInput[]
@@ -283,7 +295,9 @@ export type CuotaWhereUniqueInput = Prisma.AtLeast<{
   fechaInicioCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
   fechaHoraPagada?: Prisma.DateTimeNullableFilter<"Cuota"> | Date | string | null
-}, "idCuota">
+  idPlanDePago?: Prisma.StringFilter<"Cuota"> | string
+  planDePago?: Prisma.XOR<Prisma.PlanDePagoScalarRelationFilter, Prisma.PlanDePagoWhereInput>
+}, "idCuota" | "idPlanDePago_numeroDeCuota">
 
 export type CuotaOrderByWithAggregationInput = {
   idCuota?: Prisma.SortOrder
@@ -295,6 +309,7 @@ export type CuotaOrderByWithAggregationInput = {
   fechaInicioCuota?: Prisma.SortOrder
   fechaVencimientoCuota?: Prisma.SortOrder
   fechaHoraPagada?: Prisma.SortOrderInput | Prisma.SortOrder
+  idPlanDePago?: Prisma.SortOrder
   _count?: Prisma.CuotaCountOrderByAggregateInput
   _avg?: Prisma.CuotaAvgOrderByAggregateInput
   _max?: Prisma.CuotaMaxOrderByAggregateInput
@@ -315,6 +330,7 @@ export type CuotaScalarWhereWithAggregatesInput = {
   fechaInicioCuota?: Prisma.DateTimeWithAggregatesFilter<"Cuota"> | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeWithAggregatesFilter<"Cuota"> | Date | string
   fechaHoraPagada?: Prisma.DateTimeNullableWithAggregatesFilter<"Cuota"> | Date | string | null
+  idPlanDePago?: Prisma.StringWithAggregatesFilter<"Cuota"> | string
 }
 
 export type CuotaCreateInput = {
@@ -327,6 +343,7 @@ export type CuotaCreateInput = {
   fechaInicioCuota: Date | string
   fechaVencimientoCuota: Date | string
   fechaHoraPagada?: Date | string | null
+  planDePago: Prisma.PlanDePagoCreateNestedOneWithoutCuotasInput
 }
 
 export type CuotaUncheckedCreateInput = {
@@ -339,6 +356,7 @@ export type CuotaUncheckedCreateInput = {
   fechaInicioCuota: Date | string
   fechaVencimientoCuota: Date | string
   fechaHoraPagada?: Date | string | null
+  idPlanDePago: string
 }
 
 export type CuotaUpdateInput = {
@@ -351,6 +369,7 @@ export type CuotaUpdateInput = {
   fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  planDePago?: Prisma.PlanDePagoUpdateOneRequiredWithoutCuotasNestedInput
 }
 
 export type CuotaUncheckedUpdateInput = {
@@ -363,6 +382,7 @@ export type CuotaUncheckedUpdateInput = {
   fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type CuotaCreateManyInput = {
@@ -375,6 +395,7 @@ export type CuotaCreateManyInput = {
   fechaInicioCuota: Date | string
   fechaVencimientoCuota: Date | string
   fechaHoraPagada?: Date | string | null
+  idPlanDePago: string
 }
 
 export type CuotaUpdateManyMutationInput = {
@@ -399,6 +420,22 @@ export type CuotaUncheckedUpdateManyInput = {
   fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type CuotaListRelationFilter = {
+  every?: Prisma.CuotaWhereInput
+  some?: Prisma.CuotaWhereInput
+  none?: Prisma.CuotaWhereInput
+}
+
+export type CuotaOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type CuotaIdPlanDePagoNumeroDeCuotaCompoundUniqueInput = {
+  idPlanDePago: string
+  numeroDeCuota: number
 }
 
 export type CuotaCountOrderByAggregateInput = {
@@ -411,6 +448,7 @@ export type CuotaCountOrderByAggregateInput = {
   fechaInicioCuota?: Prisma.SortOrder
   fechaVencimientoCuota?: Prisma.SortOrder
   fechaHoraPagada?: Prisma.SortOrder
+  idPlanDePago?: Prisma.SortOrder
 }
 
 export type CuotaAvgOrderByAggregateInput = {
@@ -429,6 +467,7 @@ export type CuotaMaxOrderByAggregateInput = {
   fechaInicioCuota?: Prisma.SortOrder
   fechaVencimientoCuota?: Prisma.SortOrder
   fechaHoraPagada?: Prisma.SortOrder
+  idPlanDePago?: Prisma.SortOrder
 }
 
 export type CuotaMinOrderByAggregateInput = {
@@ -441,6 +480,7 @@ export type CuotaMinOrderByAggregateInput = {
   fechaInicioCuota?: Prisma.SortOrder
   fechaVencimientoCuota?: Prisma.SortOrder
   fechaHoraPagada?: Prisma.SortOrder
+  idPlanDePago?: Prisma.SortOrder
 }
 
 export type CuotaSumOrderByAggregateInput = {
@@ -449,12 +489,168 @@ export type CuotaSumOrderByAggregateInput = {
   montoPagado?: Prisma.SortOrder
 }
 
+export type CuotaCreateNestedManyWithoutPlanDePagoInput = {
+  create?: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput> | Prisma.CuotaCreateWithoutPlanDePagoInput[] | Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput[]
+  connectOrCreate?: Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput | Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput[]
+  createMany?: Prisma.CuotaCreateManyPlanDePagoInputEnvelope
+  connect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+}
+
+export type CuotaUncheckedCreateNestedManyWithoutPlanDePagoInput = {
+  create?: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput> | Prisma.CuotaCreateWithoutPlanDePagoInput[] | Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput[]
+  connectOrCreate?: Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput | Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput[]
+  createMany?: Prisma.CuotaCreateManyPlanDePagoInputEnvelope
+  connect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+}
+
+export type CuotaUpdateManyWithoutPlanDePagoNestedInput = {
+  create?: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput> | Prisma.CuotaCreateWithoutPlanDePagoInput[] | Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput[]
+  connectOrCreate?: Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput | Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput[]
+  upsert?: Prisma.CuotaUpsertWithWhereUniqueWithoutPlanDePagoInput | Prisma.CuotaUpsertWithWhereUniqueWithoutPlanDePagoInput[]
+  createMany?: Prisma.CuotaCreateManyPlanDePagoInputEnvelope
+  set?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  disconnect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  delete?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  connect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  update?: Prisma.CuotaUpdateWithWhereUniqueWithoutPlanDePagoInput | Prisma.CuotaUpdateWithWhereUniqueWithoutPlanDePagoInput[]
+  updateMany?: Prisma.CuotaUpdateManyWithWhereWithoutPlanDePagoInput | Prisma.CuotaUpdateManyWithWhereWithoutPlanDePagoInput[]
+  deleteMany?: Prisma.CuotaScalarWhereInput | Prisma.CuotaScalarWhereInput[]
+}
+
+export type CuotaUncheckedUpdateManyWithoutPlanDePagoNestedInput = {
+  create?: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput> | Prisma.CuotaCreateWithoutPlanDePagoInput[] | Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput[]
+  connectOrCreate?: Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput | Prisma.CuotaCreateOrConnectWithoutPlanDePagoInput[]
+  upsert?: Prisma.CuotaUpsertWithWhereUniqueWithoutPlanDePagoInput | Prisma.CuotaUpsertWithWhereUniqueWithoutPlanDePagoInput[]
+  createMany?: Prisma.CuotaCreateManyPlanDePagoInputEnvelope
+  set?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  disconnect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  delete?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  connect?: Prisma.CuotaWhereUniqueInput | Prisma.CuotaWhereUniqueInput[]
+  update?: Prisma.CuotaUpdateWithWhereUniqueWithoutPlanDePagoInput | Prisma.CuotaUpdateWithWhereUniqueWithoutPlanDePagoInput[]
+  updateMany?: Prisma.CuotaUpdateManyWithWhereWithoutPlanDePagoInput | Prisma.CuotaUpdateManyWithWhereWithoutPlanDePagoInput[]
+  deleteMany?: Prisma.CuotaScalarWhereInput | Prisma.CuotaScalarWhereInput[]
+}
+
 export type EnumEstadoCuotaFieldUpdateOperationsInput = {
   set?: $Enums.EstadoCuota
 }
 
 export type EnumFormaDePagoFieldUpdateOperationsInput = {
   set?: $Enums.FormaDePago
+}
+
+export type CuotaCreateWithoutPlanDePagoInput = {
+  idCuota?: string
+  estadoCuota?: $Enums.EstadoCuota
+  formaDePago?: $Enums.FormaDePago
+  numeroDeCuota: number
+  montoCuota: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota: Date | string
+  fechaVencimientoCuota: Date | string
+  fechaHoraPagada?: Date | string | null
+}
+
+export type CuotaUncheckedCreateWithoutPlanDePagoInput = {
+  idCuota?: string
+  estadoCuota?: $Enums.EstadoCuota
+  formaDePago?: $Enums.FormaDePago
+  numeroDeCuota: number
+  montoCuota: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota: Date | string
+  fechaVencimientoCuota: Date | string
+  fechaHoraPagada?: Date | string | null
+}
+
+export type CuotaCreateOrConnectWithoutPlanDePagoInput = {
+  where: Prisma.CuotaWhereUniqueInput
+  create: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput>
+}
+
+export type CuotaCreateManyPlanDePagoInputEnvelope = {
+  data: Prisma.CuotaCreateManyPlanDePagoInput | Prisma.CuotaCreateManyPlanDePagoInput[]
+  skipDuplicates?: boolean
+}
+
+export type CuotaUpsertWithWhereUniqueWithoutPlanDePagoInput = {
+  where: Prisma.CuotaWhereUniqueInput
+  update: Prisma.XOR<Prisma.CuotaUpdateWithoutPlanDePagoInput, Prisma.CuotaUncheckedUpdateWithoutPlanDePagoInput>
+  create: Prisma.XOR<Prisma.CuotaCreateWithoutPlanDePagoInput, Prisma.CuotaUncheckedCreateWithoutPlanDePagoInput>
+}
+
+export type CuotaUpdateWithWhereUniqueWithoutPlanDePagoInput = {
+  where: Prisma.CuotaWhereUniqueInput
+  data: Prisma.XOR<Prisma.CuotaUpdateWithoutPlanDePagoInput, Prisma.CuotaUncheckedUpdateWithoutPlanDePagoInput>
+}
+
+export type CuotaUpdateManyWithWhereWithoutPlanDePagoInput = {
+  where: Prisma.CuotaScalarWhereInput
+  data: Prisma.XOR<Prisma.CuotaUpdateManyMutationInput, Prisma.CuotaUncheckedUpdateManyWithoutPlanDePagoInput>
+}
+
+export type CuotaScalarWhereInput = {
+  AND?: Prisma.CuotaScalarWhereInput | Prisma.CuotaScalarWhereInput[]
+  OR?: Prisma.CuotaScalarWhereInput[]
+  NOT?: Prisma.CuotaScalarWhereInput | Prisma.CuotaScalarWhereInput[]
+  idCuota?: Prisma.StringFilter<"Cuota"> | string
+  estadoCuota?: Prisma.EnumEstadoCuotaFilter<"Cuota"> | $Enums.EstadoCuota
+  formaDePago?: Prisma.EnumFormaDePagoFilter<"Cuota"> | $Enums.FormaDePago
+  numeroDeCuota?: Prisma.IntFilter<"Cuota"> | number
+  montoCuota?: Prisma.DecimalFilter<"Cuota"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: Prisma.DecimalFilter<"Cuota"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
+  fechaVencimientoCuota?: Prisma.DateTimeFilter<"Cuota"> | Date | string
+  fechaHoraPagada?: Prisma.DateTimeNullableFilter<"Cuota"> | Date | string | null
+  idPlanDePago?: Prisma.StringFilter<"Cuota"> | string
+}
+
+export type CuotaCreateManyPlanDePagoInput = {
+  idCuota?: string
+  estadoCuota?: $Enums.EstadoCuota
+  formaDePago?: $Enums.FormaDePago
+  numeroDeCuota: number
+  montoCuota: runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota: Date | string
+  fechaVencimientoCuota: Date | string
+  fechaHoraPagada?: Date | string | null
+}
+
+export type CuotaUpdateWithoutPlanDePagoInput = {
+  idCuota?: Prisma.StringFieldUpdateOperationsInput | string
+  estadoCuota?: Prisma.EnumEstadoCuotaFieldUpdateOperationsInput | $Enums.EstadoCuota
+  formaDePago?: Prisma.EnumFormaDePagoFieldUpdateOperationsInput | $Enums.FormaDePago
+  numeroDeCuota?: Prisma.IntFieldUpdateOperationsInput | number
+  montoCuota?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type CuotaUncheckedUpdateWithoutPlanDePagoInput = {
+  idCuota?: Prisma.StringFieldUpdateOperationsInput | string
+  estadoCuota?: Prisma.EnumEstadoCuotaFieldUpdateOperationsInput | $Enums.EstadoCuota
+  formaDePago?: Prisma.EnumFormaDePagoFieldUpdateOperationsInput | $Enums.FormaDePago
+  numeroDeCuota?: Prisma.IntFieldUpdateOperationsInput | number
+  montoCuota?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type CuotaUncheckedUpdateManyWithoutPlanDePagoInput = {
+  idCuota?: Prisma.StringFieldUpdateOperationsInput | string
+  estadoCuota?: Prisma.EnumEstadoCuotaFieldUpdateOperationsInput | $Enums.EstadoCuota
+  formaDePago?: Prisma.EnumFormaDePagoFieldUpdateOperationsInput | $Enums.FormaDePago
+  numeroDeCuota?: Prisma.IntFieldUpdateOperationsInput | number
+  montoCuota?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  montoPagado?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  fechaInicioCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaVencimientoCuota?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fechaHoraPagada?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -469,6 +665,8 @@ export type CuotaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   fechaInicioCuota?: boolean
   fechaVencimientoCuota?: boolean
   fechaHoraPagada?: boolean
+  idPlanDePago?: boolean
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cuota"]>
 
 export type CuotaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -481,6 +679,8 @@ export type CuotaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   fechaInicioCuota?: boolean
   fechaVencimientoCuota?: boolean
   fechaHoraPagada?: boolean
+  idPlanDePago?: boolean
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cuota"]>
 
 export type CuotaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -493,6 +693,8 @@ export type CuotaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   fechaInicioCuota?: boolean
   fechaVencimientoCuota?: boolean
   fechaHoraPagada?: boolean
+  idPlanDePago?: boolean
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cuota"]>
 
 export type CuotaSelectScalar = {
@@ -505,13 +707,25 @@ export type CuotaSelectScalar = {
   fechaInicioCuota?: boolean
   fechaVencimientoCuota?: boolean
   fechaHoraPagada?: boolean
+  idPlanDePago?: boolean
 }
 
-export type CuotaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idCuota" | "estadoCuota" | "formaDePago" | "numeroDeCuota" | "montoCuota" | "montoPagado" | "fechaInicioCuota" | "fechaVencimientoCuota" | "fechaHoraPagada", ExtArgs["result"]["cuota"]>
+export type CuotaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idCuota" | "estadoCuota" | "formaDePago" | "numeroDeCuota" | "montoCuota" | "montoPagado" | "fechaInicioCuota" | "fechaVencimientoCuota" | "fechaHoraPagada" | "idPlanDePago", ExtArgs["result"]["cuota"]>
+export type CuotaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
+}
+export type CuotaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
+}
+export type CuotaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  planDePago?: boolean | Prisma.PlanDePagoDefaultArgs<ExtArgs>
+}
 
 export type $CuotaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Cuota"
-  objects: {}
+  objects: {
+    planDePago: Prisma.$PlanDePagoPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     idCuota: string
     estadoCuota: $Enums.EstadoCuota
@@ -522,6 +736,7 @@ export type $CuotaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     fechaInicioCuota: Date
     fechaVencimientoCuota: Date
     fechaHoraPagada: Date | null
+    idPlanDePago: string
   }, ExtArgs["result"]["cuota"]>
   composites: {}
 }
@@ -916,6 +1131,7 @@ readonly fields: CuotaFieldRefs;
  */
 export interface Prisma__CuotaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  planDePago<T extends Prisma.PlanDePagoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PlanDePagoDefaultArgs<ExtArgs>>): Prisma.Prisma__PlanDePagoClient<runtime.Types.Result.GetResult<Prisma.$PlanDePagoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -954,6 +1170,7 @@ export interface CuotaFieldRefs {
   readonly fechaInicioCuota: Prisma.FieldRef<"Cuota", 'DateTime'>
   readonly fechaVencimientoCuota: Prisma.FieldRef<"Cuota", 'DateTime'>
   readonly fechaHoraPagada: Prisma.FieldRef<"Cuota", 'DateTime'>
+  readonly idPlanDePago: Prisma.FieldRef<"Cuota", 'String'>
 }
     
 
@@ -970,6 +1187,10 @@ export type CuotaFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * Filter, which Cuota to fetch.
    */
@@ -989,6 +1210,10 @@ export type CuotaFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
+  /**
    * Filter, which Cuota to fetch.
    */
   where: Prisma.CuotaWhereUniqueInput
@@ -1006,6 +1231,10 @@ export type CuotaFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * Filter, which Cuota to fetch.
    */
@@ -1055,6 +1284,10 @@ export type CuotaFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
+  /**
    * Filter, which Cuota to fetch.
    */
   where?: Prisma.CuotaWhereInput
@@ -1102,6 +1335,10 @@ export type CuotaFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * Filter, which Cuotas to fetch.
    */
@@ -1151,6 +1388,10 @@ export type CuotaCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
+  /**
    * The data needed to create a Cuota.
    */
   data: Prisma.XOR<Prisma.CuotaCreateInput, Prisma.CuotaUncheckedCreateInput>
@@ -1184,6 +1425,10 @@ export type CuotaCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.CuotaCreateManyInput | Prisma.CuotaCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1198,6 +1443,10 @@ export type CuotaUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * The data needed to update a Cuota.
    */
@@ -1250,6 +1499,10 @@ export type CuotaUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Cuotas to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1264,6 +1517,10 @@ export type CuotaUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * The filter to search for the Cuota to update in case it exists.
    */
@@ -1290,6 +1547,10 @@ export type CuotaDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
   /**
    * Filter which Cuota to delete.
    */
@@ -1322,4 +1583,8 @@ export type CuotaDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Cuota
    */
   omit?: Prisma.CuotaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaInclude<ExtArgs> | null
 }

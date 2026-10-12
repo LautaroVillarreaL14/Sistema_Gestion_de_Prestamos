@@ -18,7 +18,7 @@ export class PrismaCuotasRepository implements ICuotasRepository{
                 formaDePago: cuota.formaDePago,
                 fechaInicioCuota: cuota.fechaInicioCuota,
                 fechaVencimientoCuota: cuota.fechaVencimientoCuota,
-                plan : { connect : { idPlanDePago }},
+                planDePago : { connect : { idPlanDePago }},
             },
 
         });
