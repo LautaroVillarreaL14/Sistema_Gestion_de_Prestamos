@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+enum EstadoPrestamo {
+  ACTIVO
+  FINALIZADO
+  ATRASADO
+}
+
+enum EstadoCuota {
+  PAGA
+  IMPAGA
+  VENCIDA
+}
+
+enum FormaDePago {
+  EFECTIVO
+  TRANSFERENCIA
+  NINGUNA
+  OTROS
+}
+
+model Cliente {
+  idCliente String @id @default(uuid(7)) @unique
+  nombre String @db.VarChar(50)
+  apellido String @db.VarChar(50)
+  numeroDNI String @db.VarChar(50) @unique
+  email String? @db.VarChar(50)
+  Prestamos Prestamo[]
+}
+
+model Prestamo {
+  idPrestamo String @id @default(uuid(7))
+  estadoPrestamo EstadoPrestamo @default(ACTIVO)
+  idCliente Cliente @relation(fields: [ClienteId], references: [idCliente]) 
+  ClienteId String
+  montoPrestado Decimal @db.Decimal(10, 2)
+  porcentajeRecarco Decimal @db.Decimal(5, 2)
+  fechaHoraOtorigado DateTime @default(now())
+  fechaHoraFinalizado DateTime?
+  planDePago PlandDePago []
+  }
+
+model PlandDePago {
+  idPlanDePago String @id @default(uuid(7))
+  idPrestamo Prestamo @relation(fields: [PrestamoId], references: [idPrestamo])
+  PrestamoId String
+  cantidadCuotas Int
+  diasEntreCuotas Int
+}
+
+model Cuota {
+  idCuota String @id @default(uuid(7))
+  estadoCuota EstadoCuota @default(IMPAGA)
+  formaDePago FormaDePago @default(NINGUNA)
+  numeroDeCuota Int
+  montoCuota Decimal @db.Decimal(12,2)
+  montoPagado Decimal @db.Decimal(12,2) @default(0)
+  fechaInicioCuota DateTime
+  fechaVencimientoCuota DateTime
+  fechaHoraPagada DateTime?
+
+  
+}
