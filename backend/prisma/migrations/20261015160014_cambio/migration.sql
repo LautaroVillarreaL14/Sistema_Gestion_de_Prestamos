@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "PlanDePago" ALTER COLUMN "totalAPagar" SET DATA TYPE DECIMAL(65,30);

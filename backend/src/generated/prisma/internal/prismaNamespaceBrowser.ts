@@ -100,9 +100,9 @@ export type PrestamoScalarFieldEnum = (typeof PrestamoScalarFieldEnum)[keyof typ
 
 export const PlanDePagoScalarFieldEnum = {
   idPlanDePago: 'idPlanDePago',
-  cantidadCuotas: 'cantidadCuotas',
   diasEntreCuotas: 'diasEntreCuotas',
-  idPrestamo: 'idPrestamo'
+  idPrestamo: 'idPrestamo',
+  totalAPagar: 'totalAPagar'
 } as const
 
 export type PlanDePagoScalarFieldEnum = (typeof PlanDePagoScalarFieldEnum)[keyof typeof PlanDePagoScalarFieldEnum]

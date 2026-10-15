@@ -27,67 +27,67 @@ export type AggregatePlanDePago = {
 }
 
 export type PlanDePagoAvgAggregateOutputType = {
-  cantidadCuotas: number | null
   diasEntreCuotas: number | null
+  totalAPagar: runtime.Decimal | null
 }
 
 export type PlanDePagoSumAggregateOutputType = {
-  cantidadCuotas: number | null
   diasEntreCuotas: number | null
+  totalAPagar: runtime.Decimal | null
 }
 
 export type PlanDePagoMinAggregateOutputType = {
   idPlanDePago: string | null
-  cantidadCuotas: number | null
   diasEntreCuotas: number | null
   idPrestamo: string | null
+  totalAPagar: runtime.Decimal | null
 }
 
 export type PlanDePagoMaxAggregateOutputType = {
   idPlanDePago: string | null
-  cantidadCuotas: number | null
   diasEntreCuotas: number | null
   idPrestamo: string | null
+  totalAPagar: runtime.Decimal | null
 }
 
 export type PlanDePagoCountAggregateOutputType = {
   idPlanDePago: number
-  cantidadCuotas: number
   diasEntreCuotas: number
   idPrestamo: number
+  totalAPagar: number
   _all: number
 }
 
 
 export type PlanDePagoAvgAggregateInputType = {
-  cantidadCuotas?: true
   diasEntreCuotas?: true
+  totalAPagar?: true
 }
 
 export type PlanDePagoSumAggregateInputType = {
-  cantidadCuotas?: true
   diasEntreCuotas?: true
+  totalAPagar?: true
 }
 
 export type PlanDePagoMinAggregateInputType = {
   idPlanDePago?: true
-  cantidadCuotas?: true
   diasEntreCuotas?: true
   idPrestamo?: true
+  totalAPagar?: true
 }
 
 export type PlanDePagoMaxAggregateInputType = {
   idPlanDePago?: true
-  cantidadCuotas?: true
   diasEntreCuotas?: true
   idPrestamo?: true
+  totalAPagar?: true
 }
 
 export type PlanDePagoCountAggregateInputType = {
   idPlanDePago?: true
-  cantidadCuotas?: true
   diasEntreCuotas?: true
   idPrestamo?: true
+  totalAPagar?: true
   _all?: true
 }
 
@@ -179,9 +179,9 @@ export type PlanDePagoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type PlanDePagoGroupByOutputType = {
   idPlanDePago: string
-  cantidadCuotas: number
   diasEntreCuotas: number
   idPrestamo: string
+  totalAPagar: runtime.Decimal
   _count: PlanDePagoCountAggregateOutputType | null
   _avg: PlanDePagoAvgAggregateOutputType | null
   _sum: PlanDePagoSumAggregateOutputType | null
@@ -209,18 +209,18 @@ export type PlanDePagoWhereInput = {
   OR?: Prisma.PlanDePagoWhereInput[]
   NOT?: Prisma.PlanDePagoWhereInput | Prisma.PlanDePagoWhereInput[]
   idPlanDePago?: Prisma.StringFilter<"PlanDePago"> | string
-  cantidadCuotas?: Prisma.IntFilter<"PlanDePago"> | number
   diasEntreCuotas?: Prisma.IntFilter<"PlanDePago"> | number
   idPrestamo?: Prisma.StringFilter<"PlanDePago"> | string
+  totalAPagar?: Prisma.DecimalFilter<"PlanDePago"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo?: Prisma.XOR<Prisma.PrestamoScalarRelationFilter, Prisma.PrestamoWhereInput>
   cuotas?: Prisma.CuotaListRelationFilter
 }
 
 export type PlanDePagoOrderByWithRelationInput = {
   idPlanDePago?: Prisma.SortOrder
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
   idPrestamo?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
   prestamo?: Prisma.PrestamoOrderByWithRelationInput
   cuotas?: Prisma.CuotaOrderByRelationAggregateInput
 }
@@ -231,17 +231,17 @@ export type PlanDePagoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PlanDePagoWhereInput | Prisma.PlanDePagoWhereInput[]
   OR?: Prisma.PlanDePagoWhereInput[]
   NOT?: Prisma.PlanDePagoWhereInput | Prisma.PlanDePagoWhereInput[]
-  cantidadCuotas?: Prisma.IntFilter<"PlanDePago"> | number
   diasEntreCuotas?: Prisma.IntFilter<"PlanDePago"> | number
+  totalAPagar?: Prisma.DecimalFilter<"PlanDePago"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo?: Prisma.XOR<Prisma.PrestamoScalarRelationFilter, Prisma.PrestamoWhereInput>
   cuotas?: Prisma.CuotaListRelationFilter
 }, "idPlanDePago" | "idPrestamo">
 
 export type PlanDePagoOrderByWithAggregationInput = {
   idPlanDePago?: Prisma.SortOrder
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
   idPrestamo?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
   _count?: Prisma.PlanDePagoCountOrderByAggregateInput
   _avg?: Prisma.PlanDePagoAvgOrderByAggregateInput
   _max?: Prisma.PlanDePagoMaxOrderByAggregateInput
@@ -254,61 +254,61 @@ export type PlanDePagoScalarWhereWithAggregatesInput = {
   OR?: Prisma.PlanDePagoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PlanDePagoScalarWhereWithAggregatesInput | Prisma.PlanDePagoScalarWhereWithAggregatesInput[]
   idPlanDePago?: Prisma.StringWithAggregatesFilter<"PlanDePago"> | string
-  cantidadCuotas?: Prisma.IntWithAggregatesFilter<"PlanDePago"> | number
   diasEntreCuotas?: Prisma.IntWithAggregatesFilter<"PlanDePago"> | number
   idPrestamo?: Prisma.StringWithAggregatesFilter<"PlanDePago"> | string
+  totalAPagar?: Prisma.DecimalWithAggregatesFilter<"PlanDePago"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PlanDePagoCreateInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo: Prisma.PrestamoCreateNestedOneWithoutPlanDePagoInput
   cuotas?: Prisma.CuotaCreateNestedManyWithoutPlanDePagoInput
 }
 
 export type PlanDePagoUncheckedCreateInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
   idPrestamo: string
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaUncheckedCreateNestedManyWithoutPlanDePagoInput
 }
 
 export type PlanDePagoUpdateInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo?: Prisma.PrestamoUpdateOneRequiredWithoutPlanDePagoNestedInput
   cuotas?: Prisma.CuotaUpdateManyWithoutPlanDePagoNestedInput
 }
 
 export type PlanDePagoUncheckedUpdateInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaUncheckedUpdateManyWithoutPlanDePagoNestedInput
 }
 
 export type PlanDePagoCreateManyInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
   idPrestamo: string
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PlanDePagoUpdateManyMutationInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PlanDePagoUncheckedUpdateManyInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PlanDePagoNullableScalarRelationFilter = {
@@ -318,33 +318,33 @@ export type PlanDePagoNullableScalarRelationFilter = {
 
 export type PlanDePagoCountOrderByAggregateInput = {
   idPlanDePago?: Prisma.SortOrder
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
   idPrestamo?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
 }
 
 export type PlanDePagoAvgOrderByAggregateInput = {
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
 }
 
 export type PlanDePagoMaxOrderByAggregateInput = {
   idPlanDePago?: Prisma.SortOrder
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
   idPrestamo?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
 }
 
 export type PlanDePagoMinOrderByAggregateInput = {
   idPlanDePago?: Prisma.SortOrder
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
   idPrestamo?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
 }
 
 export type PlanDePagoSumOrderByAggregateInput = {
-  cantidadCuotas?: Prisma.SortOrder
   diasEntreCuotas?: Prisma.SortOrder
+  totalAPagar?: Prisma.SortOrder
 }
 
 export type PlanDePagoScalarRelationFilter = {
@@ -408,15 +408,15 @@ export type PlanDePagoUpdateOneRequiredWithoutCuotasNestedInput = {
 
 export type PlanDePagoCreateWithoutPrestamoInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaCreateNestedManyWithoutPlanDePagoInput
 }
 
 export type PlanDePagoUncheckedCreateWithoutPrestamoInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaUncheckedCreateNestedManyWithoutPlanDePagoInput
 }
 
@@ -438,30 +438,30 @@ export type PlanDePagoUpdateToOneWithWhereWithoutPrestamoInput = {
 
 export type PlanDePagoUpdateWithoutPrestamoInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaUpdateManyWithoutPlanDePagoNestedInput
 }
 
 export type PlanDePagoUncheckedUpdateWithoutPrestamoInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cuotas?: Prisma.CuotaUncheckedUpdateManyWithoutPlanDePagoNestedInput
 }
 
 export type PlanDePagoCreateWithoutCuotasInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo: Prisma.PrestamoCreateNestedOneWithoutPlanDePagoInput
 }
 
 export type PlanDePagoUncheckedCreateWithoutCuotasInput = {
   idPlanDePago?: string
-  cantidadCuotas: number
   diasEntreCuotas: number
   idPrestamo: string
+  totalAPagar: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PlanDePagoCreateOrConnectWithoutCuotasInput = {
@@ -482,16 +482,16 @@ export type PlanDePagoUpdateToOneWithWhereWithoutCuotasInput = {
 
 export type PlanDePagoUpdateWithoutCuotasInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   prestamo?: Prisma.PrestamoUpdateOneRequiredWithoutPlanDePagoNestedInput
 }
 
 export type PlanDePagoUncheckedUpdateWithoutCuotasInput = {
   idPlanDePago?: Prisma.StringFieldUpdateOperationsInput | string
-  cantidadCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   diasEntreCuotas?: Prisma.IntFieldUpdateOperationsInput | number
   idPrestamo?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAPagar?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -527,9 +527,9 @@ export type PlanDePagoCountOutputTypeCountCuotasArgs<ExtArgs extends runtime.Typ
 
 export type PlanDePagoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPlanDePago?: boolean
-  cantidadCuotas?: boolean
   diasEntreCuotas?: boolean
   idPrestamo?: boolean
+  totalAPagar?: boolean
   prestamo?: boolean | Prisma.PrestamoDefaultArgs<ExtArgs>
   cuotas?: boolean | Prisma.PlanDePago$cuotasArgs<ExtArgs>
   _count?: boolean | Prisma.PlanDePagoCountOutputTypeDefaultArgs<ExtArgs>
@@ -537,28 +537,28 @@ export type PlanDePagoSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type PlanDePagoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPlanDePago?: boolean
-  cantidadCuotas?: boolean
   diasEntreCuotas?: boolean
   idPrestamo?: boolean
+  totalAPagar?: boolean
   prestamo?: boolean | Prisma.PrestamoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["planDePago"]>
 
 export type PlanDePagoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   idPlanDePago?: boolean
-  cantidadCuotas?: boolean
   diasEntreCuotas?: boolean
   idPrestamo?: boolean
+  totalAPagar?: boolean
   prestamo?: boolean | Prisma.PrestamoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["planDePago"]>
 
 export type PlanDePagoSelectScalar = {
   idPlanDePago?: boolean
-  cantidadCuotas?: boolean
   diasEntreCuotas?: boolean
   idPrestamo?: boolean
+  totalAPagar?: boolean
 }
 
-export type PlanDePagoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idPlanDePago" | "cantidadCuotas" | "diasEntreCuotas" | "idPrestamo", ExtArgs["result"]["planDePago"]>
+export type PlanDePagoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idPlanDePago" | "diasEntreCuotas" | "idPrestamo" | "totalAPagar", ExtArgs["result"]["planDePago"]>
 export type PlanDePagoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   prestamo?: boolean | Prisma.PrestamoDefaultArgs<ExtArgs>
   cuotas?: boolean | Prisma.PlanDePago$cuotasArgs<ExtArgs>
@@ -579,9 +579,9 @@ export type $PlanDePagoPayload<ExtArgs extends runtime.Types.Extensions.Internal
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     idPlanDePago: string
-    cantidadCuotas: number
     diasEntreCuotas: number
     idPrestamo: string
+    totalAPagar: runtime.Decimal
   }, ExtArgs["result"]["planDePago"]>
   composites: {}
 }
@@ -1008,9 +1008,9 @@ export interface Prisma__PlanDePagoClient<T, Null = never, ExtArgs extends runti
  */
 export interface PlanDePagoFieldRefs {
   readonly idPlanDePago: Prisma.FieldRef<"PlanDePago", 'String'>
-  readonly cantidadCuotas: Prisma.FieldRef<"PlanDePago", 'Int'>
   readonly diasEntreCuotas: Prisma.FieldRef<"PlanDePago", 'Int'>
   readonly idPrestamo: Prisma.FieldRef<"PlanDePago", 'String'>
+  readonly totalAPagar: Prisma.FieldRef<"PlanDePago", 'Decimal'>
 }
     
 

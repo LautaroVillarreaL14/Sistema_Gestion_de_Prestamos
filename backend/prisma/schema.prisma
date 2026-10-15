@@ -57,11 +57,11 @@ model Prestamo {
 
 model PlanDePago {
   idPlanDePago String @id @default(uuid(7))
-  cantidadCuotas Int
   diasEntreCuotas Int
   idPrestamo String @unique
   prestamo Prestamo @relation(fields: [idPrestamo], references: [idPrestamo])
   cuotas Cuota[]
+  totalAPagar Decimal
 }
 
 model Cuota {

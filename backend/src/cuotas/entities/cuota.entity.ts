@@ -1,4 +1,3 @@
-import { verify } from "crypto";
 import { EstadoCuota, FormaDePago } from "../../generated/prisma/enums.js";
 
 export class Cuota {
@@ -54,7 +53,6 @@ export class Cuota {
         this.fechaHoraPagada = new Date();
         this.estadoCuota = EstadoCuota.PAGA
         const recalcularCuotas = this.montoCuota - montoAPagar;
-        this.estadoCuota = EstadoCuota.PAGA;
         return this.montoCuota - montoAPagar;
     }
 
@@ -66,6 +64,30 @@ export class Cuota {
         return this.estadoCuota;
     }
 
+    static reconstruir(datos: {
+        idCuota: string;
+        numeroDeCuota: number;
+        montoCuota: number;
+        montoPagado: number;
+        fechaInicioCuota: Date;
+        fechaVencimientoCuota: Date;
+        fechaHoraPagada: Date | null;
+        estadoCuota: EstadoCuota;
+        formaDePago: FormaDePago;
+
+        }): Cuota {
+            return new Cuota(
+                datos.idCuota,
+                datos.montoCuota,
+                datos.numeroDeCuota,
+                datos.fechaInicioCuota,
+                datos.fechaVencimientoCuota,
+                datos.montoPagado,
+                datos.estadoCuota,
+                datos.formaDePago,
+                datos.fechaHoraPagada
+            );
+    }
 
 
 

@@ -1,4 +1,5 @@
 import type { Cuota } from "./cuota.entity.js" 
+export const ICuotasRepositoryToken = Symbol('ICuotasRepository');
 
 export interface ICuotasRepository {
     crearCuota(cuota: Cuota, idPlan: string): Promise<Cuota>
@@ -7,4 +8,3 @@ export interface ICuotasRepository {
     //buscarCuotaPorPlan(idPlan: string): Promise<Cuota[]>
 }
 
-export const ICuotasRepositoryToken = Symbol('ICuotasRepository');
